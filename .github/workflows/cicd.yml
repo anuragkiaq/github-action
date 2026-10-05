@@ -35,7 +35,9 @@ jobs:
            sudo apt-get update -y
            sudo apt-get install trivy -y
     - name: maven dependencies resolve
-      run: ./mvnw -B dependency:resolve      
+      run: |
+          chmod +x mvnw
+          ./mvnw -B dependency:resolve      
     - name: trivy scan 
       run: trivy fs --format json -o fs-report.json .
     - name: git-leaks installation
