@@ -34,8 +34,8 @@ jobs:
            echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb generic main" | sudo tee -a /etc/apt/sources.list.d/trivy.list
            sudo apt-get update -y
            sudo apt-get install trivy -y 
-    - name: trivy sacan 
-      run: trivy fs --format -o fs-report.json .
+    - name: trivy scan 
+      run: trivy fs --format json -o fs-report.json .
     - name: git-leaks installation
       run: sudo apt install gitleaks -y
     - name: git-leaks scan 
